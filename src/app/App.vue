@@ -1,5 +1,12 @@
 <script setup>
 import HelloWorld from '@/components/HelloWorld.vue'
+import vueLogo from '@/assets/vue.svg'
+import { ref } from 'vue'
+const count = ref(0)
+const msg = ref('Click')
+const handler = () => {
+  count.value++
+}
 </script>
 
 <template>
@@ -8,10 +15,13 @@ import HelloWorld from '@/components/HelloWorld.vue'
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
     <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+      <img :src="vueLogo" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <HelloWorld :msg="'Vite + Vue'" 
+    :count="count"
+    @handlerClick="handler"
+  />
 </template>
 
 <style scoped>

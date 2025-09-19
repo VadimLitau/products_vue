@@ -1,8 +1,15 @@
-<script script>
+<script setup>
+
+const emits = defineEmits(["handlerClick"])
+const handlerClick = () => {
+  emits('handlerClick')
+}
 </script>
 
 <template>
-	<button class="btn br-10 w-100">
+	<button class="btn br-10 w-100"
+    @click="handlerClick"
+  >
     <div class="btn-text">
       <slot></slot>
     </div>
