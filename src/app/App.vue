@@ -2,8 +2,8 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 import vueLogo from '@/assets/vue.svg'
 import { ref } from 'vue'
+
 const count = ref(0)
-const msg = ref('Click')
 const handler = () => {
   count.value++
 }
