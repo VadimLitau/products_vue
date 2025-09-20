@@ -71,7 +71,6 @@
 
 <template>
 	<div class="inputDiv" :class="borderClass">
-      
 		<template v-if="props.verified">
 			<div class="icon-group">
 				<img :src="iconError" alt="Error" v-if="!props.affected" />
@@ -114,7 +113,6 @@
 			<div class="affect unaffected" v-if="!props.affected">Не подтверждено</div>
 			<div class="affect affected" v-if="props.affected">Подтверждено</div>
 		</template>
-
 	</div>
 </template>
 
@@ -128,6 +126,7 @@
 		justify-content: center;
 		height: 60px;
 		padding: 0 16px;
+		padding-right: 40px;
 		transition: all 0.3s ease;
 		border: 1px solid rgb(166, 194, 227);
 	}
@@ -162,6 +161,12 @@
 
 	.input:focus {
 		outline: none;
+	}
+	input:-webkit-autofill,
+	input:-webkit-autofill:hover,
+	input:-webkit-autofill:focus {
+		transition: background-color 5000s ease-in-out 0s;
+		-webkit-text-fill-color:rgba(32, 54, 134, 1);
 	}
 
 	label {
@@ -200,4 +205,3 @@
 		color: #6fbd15;
 	}
 </style>
-
