@@ -83,13 +83,13 @@
 		border-radius: 10px;
 		padding: 0 15px;
 		font-size: 14px;
-      font-weight: 500;
+    font-weight: 500;
 		transition: all 0.3s ease;
 	}
 
 	.btn-secondary:hover {
 		color: rgba(32, 54, 134, 1);
-      box-shadow: 0 0 1px rgba(32, 54, 134, 1);
+    box-shadow: 0 0 1px rgba(32, 54, 134, 1);
 	}
 
 	.dropdown-toggle {
@@ -143,7 +143,7 @@
 		font-size: 14px;
 		transition: background-color 0.2s ease;
 		border-bottom: 1px solid #f0f0f0;
-      text-align: left;
+    text-align: left;
 	}
 
 	.dropdown-item:last-child {
