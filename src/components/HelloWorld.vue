@@ -1,6 +1,8 @@
 <script setup>
 	import UiButton from "@/shared/Ui/UiButton/UiButton.vue";
-	import UiInput from "../shared/Ui/UiInput/UiInput.vue";
+	import UiInput from "@/shared/Ui/UiInput/UiInput.vue";
+  import UiDropDown from "@/shared/Ui/UiDropDown/UiDropDown.vue";
+  import { dropdownData } from "@/utils/dropdown";
 	import { ref } from "vue";
 
 	const emits = defineEmits(["handlerClick"]);
@@ -8,21 +10,22 @@
 		msg: String,
 		count: Number,
 	});
+  const nameValue = ref("");
+  const phoneValue = ref("");
+  const emailValue = ref("");
+  const passwordValue = ref("");
 
 	const handlerClick = () => {
 		emits("handlerClick");
 	};
 
-	const nameValue = ref("");
-  const phoneValue = ref("");
-  const emailValue = ref("");
-  const passwordValue = ref("");
 	function handleInput(value) {
 		console.log("Input value:", value);
 	}
 </script>
 
 <template>
+  <UiDropDown :dropdownData="dropdownData"></UiDropDown>
   <div class="form">
     <div class="input-wrapper">
       <UiInput
