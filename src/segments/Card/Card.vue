@@ -1,11 +1,38 @@
 <script setup>
+	import CardCounter from "@/segments/Card/CardCounter.vue";
 	import iconHeart from "@/assets/icons/iconHeart.svg";
-	defineProps({
+	import icon1 from "@/assets/icons/iconsCard/icon_1.svg";
+	import icon2 from "@/assets/icons/iconsCard/Vector.svg";
+	import icon3 from "@/assets/icons/iconsCard/оптом.svg";
+	import icon1Active from "@/assets/icons/iconsCard/icon_1_active.svg";
+	import icon2Active from "@/assets/icons/iconsCard/Vector_active.svg";
+	import icon3Active from "@/assets/icons/iconsCard/оптом_active.svg";
+	import iconCardCart from "@/assets/icons/iconsCard/iconCardCart.svg";
+
+	const props = defineProps({
 		card: {
 			type: Object,
 			required: true,
 		},
+		isButtonActive: {
+			type: Function,
+			required: true,
+		},
+		setActiveButton: {
+			type: Function,
+			required: true,
+		},
 	});
+
+	const btns = [
+		{ src: icon1, srcActive: icon1Active },
+		{ src: icon2, srcActive: icon2Active },
+		{ src: icon3, srcActive: icon3Active },
+	];
+
+	const handleButtonClick = (index) => {
+		props.setActiveButton(props.card.id, index);
+	};
 </script>
 
 <template>
@@ -22,39 +49,49 @@
 		<div class="card-content">
 			<h3 class="card-title">{{ card.title }}</h3>
 
-			<div class="card-details">
-				<div class="detail-row">
-					<div class="detail-col">
+			<div class="card-termin row">
+				<div class="subrow">
+					<div class="termin-col" v-if="card.dateOrigin">
 						<span class="label">Дата выработки: </span>
 						<span class="value">{{ card.dateOrigin }}</span>
 					</div>
-					<div class="detail-col">
+					<div class="termin-col" v-if="card.dateExpiriens">
 						<span class="label">Срок годности: </span>
 						<span class="value">{{ card.dateExpiriens }}</span>
 					</div>
 				</div>
-				<div class="detail-row">
-					<span class="label">Вес:</span>
-					<span class="value">{{ card.weight }} кг</span>
+			</div>
+			<div class="card-details row">
+				<div class="subrow">
+					<button
+						:class="['btn-details', { active: isButtonActive(card.id, i) }]"
+						v-for="(btn, i) in btns"
+						:key="btn.src"
+						@click="handleButtonClick(i)">
+						<img
+							:src="isButtonActive(card.id, i) ? btn.srcActive : btn.src"
+							alt=""
+							width="24"
+							height="24" />
+					</button>
+				</div>
+				<div class="subrow" v-if="card.weight">
+					<div class="value" style="margin-top: 1px; height: 35px">
+						Цена от 1 упаковки ({{ card.weight }} кг)
+					</div>
 				</div>
 			</div>
-
-			<div class="card-price">
-				<div class="price-main">
-					{{ card.price.toFixed(2) }} ₽
-					<span class="price-unit">/ {{ card.unit }}</span>
+			<CardCounter></CardCounter>
+			<div class="card-footer">
+				<div class="card-price" v-if="card.price">
+					<div class="price-main">{{ card.price.toFixed(2) }} ₽</div>
+					<div class="price-old" v-if="card.oldPrice">
+						{{ card.oldPrice.toFixed(2) }} ₽
+						<span class="price-unit">/ {{ card.unit }}</span>
+					</div>
 				</div>
-				<div class="price-old" v-if="card.oldPrice">
-					{{ card.oldPrice.toFixed(2) }} ₽
-				</div>
-			</div>
-
-			<div class="card-actions">
-				<button class="btn-add">Добавить в корзину</button>
-				<div class="quantity-controls">
-					<button class="btn-quantity">-</button>
-					<span class="quantity">1</span>
-					<button class="btn-quantity">+</button>
+				<div class="card-cart">
+					<img :src="iconCardCart" alt="" />
 				</div>
 			</div>
 		</div>
@@ -69,16 +106,18 @@
 	.card:hover {
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 	}
+
 	.card-header {
 		background: #fff;
 		padding: 10px;
 		border-radius: 12px;
 	}
+
 	.card-image {
 		position: relative;
 		padding: 10px;
 		overflow: hidden;
-      margin-bottom: 10px;
+		margin-bottom: 10px;
 	}
 
 	.image {
@@ -92,10 +131,6 @@
 		top: 0px;
 		right: 0;
 		cursor: pointer;
-		/* padding: 4px 8px;
-		border-radius: 6px;
-		font-size: 12px;
-		font-weight: 600; */
 	}
 
 	.card-content {
@@ -108,39 +143,82 @@
 		line-height: 1.2;
 		color: rgba(32, 54, 134, 1);
 		text-align: left;
-      margin-bottom: 8px;
-	}
-
-	.card-details {
 		margin-bottom: 8px;
 	}
 
-	.detail-row {
+	.card-termin {
+		margin-bottom: 8px;
+	}
+
+	.card-details {
+		background-color: #fff;
+		border-bottom-right-radius: 8px;
+		border-bottom-left-radius: 8px;
+		margin-bottom: 8px;
+	}
+
+	.subrow {
 		display: flex;
-		justify-content:space-between;
+		justify-content: space-between;
 		margin-bottom: 6px;
 		font-size: 14px;
+		gap: 1px;
 	}
-   .detail-col{   
-      flex:50%;
-      text-align: left;
-   }
+
+	.btn-details {
+		background-color: transparent;
+		flex: 33.3333%;
+		cursor: pointer;
+		background-color: rgba(221, 225, 230, 1);
+		transition: all 0.3s ease;
+		height: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: none;
+	}
+
+	.btn-details.active {
+		background-color: #fff;
+	}
+
+	.btn-details:first-child {
+		border-top-left-radius: 8px;
+	}
+
+	.btn-details:last-child {
+		border-top-right-radius: 8px;
+	}
+
+	.termin-col {
+		flex: 50%;
+		text-align: left;
+	}
+
 	.label {
-      display: inline-block;
+		display: inline-block;
 		color: rgba(112, 121, 142, 1);
 		font-size: 12px;
-      line-height: 1.2;
+		line-height: 1.2;
 		min-width: 100px;
 	}
 
 	.value {
-      display: inline-block;
+		display: inline-block;
 		color: rgba(32, 54, 134, 1);
-      font-size: 12px;
-      line-height: 1.2;
+		font-size: 12px;
+		line-height: 1.2;
 		font-weight: 500;
 	}
-
+	.card-details .value {
+		display: flex;
+		align-items: center;
+	}
+	.card-footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 	.card-price {
 		margin-bottom: 16px;
 	}
@@ -148,68 +226,19 @@
 	.price-main {
 		font-size: 20px;
 		font-weight: 700;
-		color: #1f2937;
+		color: rgba(32, 54, 134, 1);
 	}
 
 	.price-unit {
 		font-size: 14px;
 		color: #6b7280;
 		font-weight: 400;
+		line-height: 0.75;
 	}
 
 	.price-old {
-		font-size: 14px;
-		color: #9ca3af;
-		text-decoration: line-through;
-	}
-
-	.card-actions {
-		display: flex;
-		align-items: center;
-		gap: 12px;
-	}
-
-	.btn-add {
-		flex: 1;
-		background: #3b82f6;
-		color: white;
-		border: none;
-		padding: 10px 16px;
-		border-radius: 8px;
-		font-weight: 600;
-		cursor: pointer;
-		transition: background-color 0.2s ease;
-	}
-
-	.btn-add:hover {
-		background: #2563eb;
-	}
-
-	.quantity-controls {
-		display: flex;
-		align-items: center;
-		gap: 8px;
-	}
-
-	.btn-quantity {
-		width: 32px;
-		height: 32px;
-		border: 1px solid #d1d5db;
-		background: white;
-		border-radius: 6px;
-		font-weight: 600;
-		cursor: pointer;
-		transition: all 0.2s ease;
-	}
-
-	.btn-quantity:hover {
-		border-color: #3b82f6;
-		color: #3b82f6;
-	}
-
-	.quantity {
-		font-weight: 600;
-		min-width: 20px;
-		text-align: center;
+		font-size: 12px;
+		line-height: 1.2;
+		color: rgba(112, 121, 142, 1);
 	}
 </style>

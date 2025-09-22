@@ -1,19 +1,19 @@
 <script setup>
 	import CardList from "@/segments/CardList/CardList.vue";
-	import { cardDataset } from "@/utils/card";
+	import { getCardDataset } from "@/utils/card";
 	import { onMounted, ref } from "vue";
 
-	const cardList = ref(cardDataset);
+	const dataset = getCardDataset()
 
-	onMounted(() => {
-		console.log("Карточки загружены:", cardList.value);
-	});
+	// onMounted(() => {
+	// 	console.log("Карточки загружены:", cardList.value.p);
+	// });
 </script>
 
 <template>
 	<div class="company-page">
 		<h1>О Компании</h1>
-		<CardList :cardList="cardList" />
+		<CardList :cardList="dataset.productsDataset.data" />
 	</div>
 </template>
 
