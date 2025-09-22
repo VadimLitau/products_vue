@@ -1,5 +1,5 @@
 <script setup>
-	import CardList from "@/components/CardList.vue";
+	import CardList from "@/segments/CardList/CardList.vue";
 	import { cardDataset } from "@/utils/card";
 	import { onMounted, ref } from "vue";
 

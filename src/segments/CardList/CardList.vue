@@ -1,5 +1,5 @@
 <script setup>
-import Card from './Card.vue';
+import Card from '@/segments/Card/Card.vue';
 
 defineProps({
   cardList: {
