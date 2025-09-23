@@ -25,7 +25,7 @@
 </script>
 
 <template>
-  <UiDropDown :dropdownData="dropdownData"></UiDropDown>
+  <UiDropDown :dropdownData="dropdownData" :title="'Популярные'"></UiDropDown>
   <div class="form">
     <div class="input-wrapper">
       <UiInput

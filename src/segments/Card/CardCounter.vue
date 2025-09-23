@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 
 
-const count = ref(1);
+const count = ref(12);
 
 const increment = () => {
    count.value++
@@ -23,9 +23,9 @@ const decrement = () => {
 <style scoped>
 .card-counter {
    height: 40px;
-   width: 100%;
+   /* width: 100%; */
    border-radius: 12px;
-   background-color: #fff;
+   background-color: var(--bg-white);
    display: flex;
    align-items: center;
    justify-content: space-between;
@@ -41,6 +41,7 @@ const decrement = () => {
    border: none;
    padding: 8px;
    cursor: pointer;
+   color: rgba(32, 54, 134, 1);
 }
 .quantity {
    font-size: 14px;

@@ -25,7 +25,10 @@
 .justify-center{
   justify-content: center;
 }
-
+/* Text */
+.text-center{text-align: center;}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
 /* Gap */
 
 .g-10{
@@ -45,7 +48,10 @@
   width: 24px;
   height: 24px;
 }
-
+.icon-xl {
+  width: 40px;
+  height: 40px;
+}
 .icon-small {
   width: 20px;
   height: 20px;

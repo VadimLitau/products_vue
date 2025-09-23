@@ -23,7 +23,7 @@ import logo from "@/assets/images/header/logo.svg";
           <RouterLink to="#">Прайс</RouterLink>
         </li>
         <li>
-          <RouterLink to="#">Производство</RouterLink>
+          <RouterLink to="/production">Производство</RouterLink>
         </li>
         <li>
           <RouterLink to="#">Оплата</RouterLink>

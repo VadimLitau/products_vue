@@ -6,7 +6,8 @@
       dropdownData: {
          type: Array,
          required: true,
-      }
+      },
+		title:String,
    })
 
 	const visible = ref(false);
@@ -36,7 +37,7 @@
 		<button
 			class="btn btn-secondary dropdown-toggle"
 			@click.stop="visible = !visible">
-			Популярные
+			{{title}}
 			<img
 				:src="iconDropdown"
 				alt="Icon"

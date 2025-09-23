@@ -1,7 +1,6 @@
 <script setup>
+import UiSvg from "@/shared/Ui/UiSvg/UiSvg.vue";
 	import { computed, ref } from "vue";
-	import iconError from "@/assets/icons/iconError.svg";
-	import iconVerified from "@/assets/icons/iconVerified.svg";
 	import iconEye from "@/assets/icons/iconEye.svg";
 	import iconEyeOff from "@/assets/icons/iconEyeOff.svg";
 
@@ -73,8 +72,7 @@
 	<div class="inputDiv" :class="borderClass">
 		<template v-if="props.verified">
 			<div class="icon-group">
-				<img :src="iconError" alt="Error" v-if="!props.affected" />
-				<img :src="iconVerified" alt="Verified" v-if="props.affected" />
+				<ui-svg :name="props.affected ? 'icon-iconVerified': 'icon-iconError'"/>
 			</div>
 		</template>
 

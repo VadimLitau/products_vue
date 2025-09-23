@@ -13,7 +13,7 @@
 <template>
 	<div class="company-page">
 		<h1>О Компании</h1>
-		<CardList :cardList="dataset.productsDataset.data" />
+		
 	</div>
 </template>
 

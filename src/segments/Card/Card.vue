@@ -1,13 +1,13 @@
 <script setup>
 	import CardCounter from "@/segments/Card/CardCounter.vue";
-	import iconHeart from "@/assets/icons/iconHeart.svg";
+	import UiSvg from "@/shared/Ui/UiSvg/UiSvg.vue";
 	import icon1 from "@/assets/icons/iconsCard/icon_1.svg";
 	import icon2 from "@/assets/icons/iconsCard/Vector.svg";
 	import icon3 from "@/assets/icons/iconsCard/оптом.svg";
 	import icon1Active from "@/assets/icons/iconsCard/icon_1_active.svg";
 	import icon2Active from "@/assets/icons/iconsCard/Vector_active.svg";
 	import icon3Active from "@/assets/icons/iconsCard/оптом_active.svg";
-	import iconCardCart from "@/assets/icons/iconsCard/iconCardCart.svg";
+	
 
 	const props = defineProps({
 		card: {
@@ -41,7 +41,8 @@
 			<div class="card-image">
 				<img :src="card.image" :alt="card.title" class="image" />
 				<div class="card-favorite">
-					<img :src="iconHeart" alt="Избранное" />
+					<UiSvg name="icon-iconHeart"/>
+					<!-- <img :src="iconHeart" alt="Избранное" /> -->
 				</div>
 			</div>
 		</div>
@@ -91,7 +92,8 @@
 					</div>
 				</div>
 				<div class="card-cart">
-					<img :src="iconCardCart" alt="" />
+					<UiSvg :class="'icon-xl'" name="icon-iconsCard-iconCardCart"/>
+					<!-- <img :src="iconCardCart" alt="" /> -->
 				</div>
 			</div>
 		</div>
@@ -108,7 +110,7 @@
 	}
 
 	.card-header {
-		background: #fff;
+		background: var(--bg-white);
 		padding: 10px;
 		border-radius: 12px;
 	}
@@ -141,7 +143,7 @@
 		font-size: 16px;
 		font-weight: 600;
 		line-height: 1.2;
-		color: rgba(32, 54, 134, 1);
+		color: var(--text-blue);
 		text-align: left;
 		margin-bottom: 8px;
 	}
@@ -151,7 +153,7 @@
 	}
 
 	.card-details {
-		background-color: #fff;
+		background-color: var(--bg-white);
 		border-bottom-right-radius: 8px;
 		border-bottom-left-radius: 8px;
 		margin-bottom: 8px;
@@ -179,7 +181,7 @@
 	}
 
 	.btn-details.active {
-		background-color: #fff;
+		background-color: var(--bg-white);
 	}
 
 	.btn-details:first-child {
@@ -197,7 +199,7 @@
 
 	.label {
 		display: inline-block;
-		color: rgba(112, 121, 142, 1);
+		color: var(--text-grey);
 		font-size: 12px;
 		line-height: 1.2;
 		min-width: 100px;
@@ -205,7 +207,7 @@
 
 	.value {
 		display: inline-block;
-		color: rgba(32, 54, 134, 1);
+		color: var(--text-blue);
 		font-size: 12px;
 		line-height: 1.2;
 		font-weight: 500;
@@ -226,12 +228,12 @@
 	.price-main {
 		font-size: 20px;
 		font-weight: 700;
-		color: rgba(32, 54, 134, 1);
+		color: var(--text-blue);
 	}
 
 	.price-unit {
 		font-size: 14px;
-		color: #6b7280;
+		color: var(--text-grey);
 		font-weight: 400;
 		line-height: 0.75;
 	}
@@ -239,6 +241,6 @@
 	.price-old {
 		font-size: 12px;
 		line-height: 1.2;
-		color: rgba(112, 121, 142, 1);
+		color: var(--text-grey);
 	}
 </style>

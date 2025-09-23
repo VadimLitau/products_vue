@@ -4,4 +4,6 @@ export const PAGES_PATHS = {
   COMPANY: '/company',
 
   CONTACTS: '/contacts',
+  
+  PRODUCTION: '/production',
 }
