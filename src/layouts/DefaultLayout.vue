@@ -1,11 +1,10 @@
 <script setup>
+import Header from '@/widgets/Header/Header.vue';
 
 </script>
 
 <template>
-  <RouterLink to="/">Главная</RouterLink>
-  <RouterLink to="/company">О компании</RouterLink>
-  <RouterLink to="/contacts">Контакты</RouterLink>
+  <Header/>
 
   <main>
     <slot />

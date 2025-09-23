@@ -1,3 +1,52 @@
+/* Flex */
 .flex{
   display: flex;
+}
+
+.flex-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.align-center{
+  align-items: center
+}
+
+.align-start{
+  align-items: flex-start;
+}
+
+.justify-center{
+  justify-content: center;
+}
+
+/* Gap */
+
+.g-10{
+  gap: 10px;
+}
+
+.g-16{
+  gap: 16px;
+}
+
+/* Icons */
+.icon {
+  fill: currentColor; 
+}
+
+.icon-normal {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-small {
+  width: 20px;
+  height: 20px;
 }

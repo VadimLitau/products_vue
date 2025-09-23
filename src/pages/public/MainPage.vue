@@ -2,6 +2,7 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 import vueLogo from '@/assets/vue.svg'
 import { ref } from 'vue'
+import UiSvg from '../../shared/Ui/UiSvg/UiSvg.vue'
 
 const count = ref(0)
 const handler = () => {
