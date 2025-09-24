@@ -45,10 +45,10 @@
 <style scoped>
 	.cards-list {
 		width: 100%;
-		max-width: 1458px;
+		/* max-width: 1458px; */
 		display: flex;
 		flex-wrap: wrap;
-		gap: 50px;
+		gap: 20px;
 		background: rgb(236, 237, 240);
 	}
 	.card-item {

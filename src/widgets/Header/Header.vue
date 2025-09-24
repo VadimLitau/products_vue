@@ -7,6 +7,7 @@ import logo from "@/assets/images/header/logo.svg";
 
 <template>
   <header class="header-wrap flex justify-center">
+    
       <div class="head flex align-center g-10">
       <RouterLink to="/">
         <img :src="logo" alt="Compnay logo">

@@ -1,20 +1,21 @@
 <script setup>
 import UiDropDown from '@/shared/Ui/UiDropDown/UiDropDown.vue';
-import { dropdownData2 } from '@/utils/dropdown';
+import { setDatasets } from '@/utils/dropdown';
 
-
+const {  sidebarMenuDataset } = setDatasets();
 </script>
 <template>
     <div class="sidebar">
-      <ui-drop-down :dropdownData="dropdownData2" :title="'Филе рыбы, стейки, фарш'"/>
+      <ui-drop-down :dropdownData="sidebarMenuDataset.items" :title="sidebarMenuDataset.title"/>
     </div>
 </template>
 <style scoped >
 .sidebar {
-   /* width: 100%; */
-   min-width: 252px;
-    height: 100vh;
-    /* background-color: var(--bg-white); */
-    margin-right: 50px;
+   margin-right: 32px;
+   /* width: 256px; */
+   min-width: 256px;
+   min-height: 300px;
+   background-color: blueviolet;
+   /* min-height:calc(100vh - 100px); */
 }
 </style>
