@@ -1,9 +1,9 @@
 <script setup>
-	import CardList from "@/segments/CardList/CardList.vue";
-	import { getCardDataset } from "@/utils/card";
-	import { onMounted, ref } from "vue";
+	// import CardList from "@/segments/CardList/CardList.vue";
+	// import { getCardDataset } from "@/utils/card";
+	// import { onMounted, ref } from "vue";
 
-	const dataset = getCardDataset()
+	// const dataset = getCardDataset()
 
 	// onMounted(() => {
 	// 	console.log("Карточки загружены:", cardList.value.p);

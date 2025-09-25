@@ -51,10 +51,15 @@ button {border: none;}
   align-items: center;
   justify-content: flex-start;
 }
-.container{max-width: 1440px;}
-.container-fluid{max-width: 1763px;}
+.container{
+  max-width: 1120px;
+  margin: 0 auto;
+}
+/* .container-fluid{max-width: 1763px;} */
 main{
-  /* max-width: 1440px; */
+  background-color: var(--bg-grey);
+  flex:1 auto;
+  width: 100%;
 }
 /* Может лучше что-нибудь типа .container{max-width: 1440px;...} .container-fluid{max-width: 1763px;...} . */
 p{

@@ -1,15 +1,31 @@
 <script setup>
 import Sidebar from "@/widgets/SideBar/Sidebar.vue";
 import CardList from "@/segments/CardList/CardList.vue";
-import { getCardDataset } from "@/utils/card";
-import { pluralizeRu } from "@/utils/pluralizeRu";
+import { getCardDataset } from "@/shared/lib/card";
+import { pluralizeRu } from "@/shared/lib/pluralizeRu";
 import { onMounted } from "vue";
 import { ref } from "vue";
 
 
 const dataset = getCardDataset()
 const quantity = ref(null)
-
+const filters = ref([])
+const addFilter = (item) => {
+   const filterExists = filters.value.some(filter => filter.item === item.item)
+   
+   if (filterExists) {
+      return 
+   }
+   
+   filters.value.push({
+      item: item.item
+   })
+}
+const removeFilter = (item) => {
+   filters.value = filters.value.filter((filter) => {
+      return filter.item !== item.item
+   })
+}
 onMounted(() => {
    quantity.value = pluralizeRu(
       dataset.productsDataset.data.length,
@@ -24,10 +40,22 @@ onMounted(() => {
       </div>
        <div class="page-container flex">
           
-            <sidebar/>
+            <sidebar @addFilter="addFilter"/>
             
             <div class="side">
                <h2 class="text-left">Филе рыбы, стейки, фарш <span>{{dataset.productsDataset.data.length + quantity }}</span></h2>
+               <div class="filters flex">
+                  <div class="filters-item" v-for="filter in filters" :key="filter.item"
+                     :title="filter.item"
+                  > 
+                     <span>
+                        {{ filter.item }}
+                     </span>
+                     <span
+                        @click="removeFilter(filter)"
+                     >&times;</span>
+                  </div>
+               </div>
             <CardList :cardList="dataset.productsDataset.data" />
          </div>
       </div>
@@ -46,12 +74,44 @@ onMounted(() => {
    font-size: 32px;
    font-weight: 600;
    line-height: 120%;
+   margin: 0;
+   margin-bottom: 20px;
 }
 .side h2 span{
    font-size: 14px;
    font-weight: 400;
    line-height: 130%;
    color: var(--text-grey);
+}
+.filters {
+   min-height: 30px;
+   margin-bottom: 20px;
+   flex-wrap: wrap;
+   gap: 10px;
+}
+.filters-item{
+   margin-right: 10px;
+   width: 125px;
+   font-size: 14px;
+   line-height: 130%;
+   color: var(--text-blue);
+   padding: 5px 10px;
+   border:1px solid var(--text-blue);
+   border-radius: 8px;
+   background-color: var(--bg-white);
+   align-items: center;
+   justify-content: space-between;
+   display: flex;
+}
+.filters-item span:first-child{
+   width: 100px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+.filters-item span:last-child{
+   cursor: pointer;
+   font-size: 20px;
 }
 .page-container {
    max-width: 1120px;

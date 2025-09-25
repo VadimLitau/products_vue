@@ -1,5 +1,6 @@
 <script setup>
 	import iconDropdown from "@/assets/icons/iconDropdown.svg";
+	import UiSvg from "@/shared/Ui/UiSvg/UiSvg.vue";
 	import { ref, onMounted, onUnmounted } from "vue";
 
    const props = defineProps({
@@ -8,25 +9,26 @@
          required: true,
       },
 		title:String,
+		icon:false,
+		iconName:String,
    })
-
+	const emits = defineEmits(['addFilter'])
 	const visible = ref(false);
 
-   
-
-	// Закрытие дропдауна при клике вне его области
+	const addFilter = (item) => {
+		emits('addFilter', item)
+		visible.value = false
+	}
 	const closeDropdown = (event) => {
 		if (!event.target.closest(".dropdown")) {
 			visible.value = false;
 		}
 	};
 
-	// Добавляем обработчик клика по документу
 	onMounted(() => {
 		document.addEventListener("click", closeDropdown);
 	});
 
-	// Убираем обработчик при размонтировании компонента
 	onUnmounted(() => {
 		document.removeEventListener("click", closeDropdown);
 	});
@@ -34,10 +36,14 @@
 
 <template>
 	<div class="dropdown">
+
 		<button
 			class="btn btn-secondary dropdown-toggle"
 			@click.stop="visible = !visible">
-			{{title}}
+			<ui-svg :name="props.iconName" v-if="props.icon"></ui-svg>
+			<span style="width: 50%;">
+				{{title}}
+			</span>
 			<img
 				:src="iconDropdown"
 				alt="Icon"
@@ -45,20 +51,10 @@
 		</button>
 		<ul :class="['dropdown-menu', { visible: visible }]">
 			<li v-for="item in props.dropdownData" :key="item.item">
-				<a class="dropdown-item" href="#" @click.prevent="visible = false"
+				<a class="dropdown-item" role="button" @click.prevent="addFilter(item)"
 					>{{item.item}}</a
 				>
 			</li>
-			<!-- <li>
-				<a class="dropdown-item" href="#" @click.prevent="visible = false"
-					>По цене</a
-				>
-			</li>
-			<li>
-				<a class="dropdown-item" href="#" @click.prevent="visible = false"
-					>Новизне</a
-				>
-			</li> -->
 		</ul>
 	</div>
 </template>
@@ -66,7 +62,8 @@
 <style scoped>
 	.dropdown {
 		position: relative;
-		width: 190px;
+		width: 100%;
+		/* width: 190px; */
 		height: 38px;
 		margin: 20px auto;
 	}

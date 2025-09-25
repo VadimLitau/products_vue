@@ -11,8 +11,8 @@ const handler = () => {
 </script>
 
 <template>
-  <div>
-    <h1>Главная страница</h1>
+  <div style="width: 480px;background-color: #000;margin: 0 auto;">
+    <h1 style="color: var(--text-blue);">Главная страница</h1>
     <div>
     <a href="https://vite.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
