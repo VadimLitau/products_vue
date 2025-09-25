@@ -1,61 +1,111 @@
 /* Flex */
-.flex{
+.flex {
   display: flex;
 }
 
-.flex-col{
+.flex-col {
   display: flex;
   flex-direction: column;
 }
 
-.flex-center{
+.flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.align-center{
+.align-center {
   align-items: center
 }
 
-.align-start{
+.align-start {
   align-items: flex-start;
 }
 
-.justify-center{
+.justify-center {
   justify-content: center;
 }
+
 /* Text */
-.text-center{text-align: center;}
-.text-left{text-align: left;}
-.text-right{text-align: right;}
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
 /* Gap */
 
-.g-10{
+.g-10 {
   gap: 10px;
 }
 
-.g-16{
+.g-16 {
   gap: 16px;
 }
 
-.g-30{
-  gap:30px;
+.g-20 {
+  gap: 20px;
+}
+
+.g-30 {
+  gap: 30px;
+}
+
+/* Margin & Padding */
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.pt-10 {
+  padding-top: 10px;
+}
+
+.pb-10 {
+  padding-bottom: 10px;
+}
+
+.pt-20 {
+  padding-top: 20px;
+}
+
+.pb-20 {
+  padding-bottom: 20px;
 }
 
 /* Icons */
 .icon {
-  fill: currentColor; 
+  fill: currentColor;
 }
 
 .icon-normal {
   width: 24px;
   height: 24px;
 }
+
 .icon-xl {
   width: 40px;
   height: 40px;
 }
+
 .icon-small {
   width: 20px;
   height: 20px;
@@ -63,15 +113,17 @@
 
 /* Border-radius */
 .br-10 {
-	border-radius: 10px;
+  border-radius: 10px;
+}
+.br-20{
+  border-radius: 20px;
 }
 
-
 /* Width */
-.w-100{
+.w-100 {
   width: 100%;
 }
 
-.w-50{
+.w-50 {
   width: 50%;
 }

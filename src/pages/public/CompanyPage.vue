@@ -1,24 +1,25 @@
 <script setup>
-	// import CardList from "@/segments/CardList/CardList.vue";
-	// import { getCardDataset } from "@/utils/card";
-	// import { onMounted, ref } from "vue";
+	import Hero from '@/segments/Hero/Hero.vue';
+	import { useRouter } from 'vue-router';
 
-	// const dataset = getCardDataset()
-
-	// onMounted(() => {
-	// 	console.log("Карточки загружены:", cardList.value.p);
-	// });
+	const currentRouter = useRouter().currentRoute.value.path
 </script>
 
 <template>
 	<div class="company-page">
-		<h1>О Компании</h1>
+		<div class="container">
+			<h1>О Компании</h1>
+			<Hero :router="currentRouter"></Hero>
+		</div>
 		
 	</div>
 </template>
 
 <style scoped>
-	
+	.company-page {
+		height: 100%;
+		/* min-height: 100%; */
+}
 
 	
 </style>

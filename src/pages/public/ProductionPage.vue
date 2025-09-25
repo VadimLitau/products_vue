@@ -1,12 +1,15 @@
 <script setup>
+import Hero from "@/segments/Hero/Hero.vue";
 import Sidebar from "@/widgets/SideBar/Sidebar.vue";
 import CardList from "@/segments/CardList/CardList.vue";
 import { getCardDataset } from "@/shared/lib/card";
 import { pluralizeRu } from "@/shared/lib/pluralizeRu";
 import { onMounted } from "vue";
 import { ref } from "vue";
+import img from '../../assets/images/products/img-1.jpg'
+import { useRouter } from "vue-router";
 
-
+const router = useRouter().currentRoute.value.path
 const dataset = getCardDataset()
 const quantity = ref(null)
 const filters = ref([])
@@ -35,11 +38,14 @@ onMounted(() => {
 </script>
 <template>
     <div class="production-page">
-      <div class="page-container">
+      <div class="container">
          <h1 class="page-title text-left">Рыбоперерабатывающее предприятие ПТК Экор-Фиш</h1>
       </div>
-       <div class="page-container flex">
-          
+      <div class="container">
+         <Hero :router="router"></Hero>
+      </div>
+       <div class="container flex mt-20 pt-20">
+        
             <sidebar @addFilter="addFilter"/>
             
             <div class="side">
@@ -66,6 +72,7 @@ onMounted(() => {
    background-color: var(--bg-grey);
    /* background-color: rgba(235, 237, 240, 1); */
 }
+
 .side{
    flex:1 1 auto;
 }

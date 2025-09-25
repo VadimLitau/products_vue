@@ -35,7 +35,7 @@
 </script>
 
 <template>
-	<div class="dropdown">
+	<div class="dropdown w-100">
 
 		<button
 			class="btn btn-secondary dropdown-toggle"
@@ -62,7 +62,7 @@
 <style scoped>
 	.dropdown {
 		position: relative;
-		width: 100%;
+		/* width: 100%; */
 		/* width: 190px; */
 		height: 38px;
 		margin: 20px auto;
