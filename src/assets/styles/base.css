@@ -51,7 +51,8 @@ button {border: none;}
   align-items: center;
   justify-content: flex-start;
 }
-
+.container{max-width: 1440px;}
+.container-fluid{max-width: 1763px;}
 main{
   /* max-width: 1440px; */
 }

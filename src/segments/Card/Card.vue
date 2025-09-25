@@ -102,7 +102,7 @@
 
 <style scoped>
 	.card {
-		flex: calc(16% - 50px);
+		flex:0 0 262px;
 	}
 
 	.card:hover {
