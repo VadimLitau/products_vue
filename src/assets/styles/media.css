@@ -61,6 +61,18 @@
   .br-10 {
     border-radius: 0.625rem;
   }
+
+  .g-10{
+    gap:  0.625rem;
+  }
+
+  .g-16{
+    gap: 1rem;
+  }
+
+  .g-30{
+    gap: 1.875rem;
+  }
 }
 
 @media (max-width: 768px) {

@@ -113,17 +113,3 @@ h6 {
 	letter-spacing: 0px;
 }
 
-/* Border-radius */
-.br-10 {
-	border-radius: 10px;
-}
-
-
-/* Width */
-.w-100{
-  width: 100%;
-}
-
-.w-50{
-  width: 50%;
-}
