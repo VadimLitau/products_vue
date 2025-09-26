@@ -17,9 +17,27 @@ const handleToggle = () => {
   <aside class="side-menu" :class="{ open: isOpen }">
     <button class="close-btn" @click="handleToggle">×qqqqqqqqqq</button>
     <ul>
-      <li><RouterLink to="/">Главная</RouterLink></li>
-      <li><RouterLink to="/catalog">Каталог</RouterLink></li>
-      <li><RouterLink to="/about">О нас</RouterLink></li>
+      <li>
+        <RouterLink to="/">Главная</RouterLink>
+      </li>
+      <li>
+        <RouterLink to="#">Доставка</RouterLink>
+      </li>
+      <li>
+        <RouterLink to="#">Прайс</RouterLink>
+      </li>
+      <li>
+        <RouterLink to="/production">Производство</RouterLink>
+      </li>
+      <li>
+        <RouterLink to="#">Оплата</RouterLink>
+      </li>
+      <li>
+        <RouterLink to="/contacts">Контакты</RouterLink>
+      </li>
+      <li>
+        <RouterLink to="/company">О компании</RouterLink>
+      </li>
     </ul>
   </aside>
 </template>
